@@ -7,23 +7,26 @@ import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PersonIcon from "@mui/icons-material/Person";
-const Navbar = () => {
+const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
+  const [userPic, setUserPic] = useState(
+    "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
+  );
 
-    const [userPic, setUserPic] = useState(
-      "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
-    );
+  const [navbarModel, setNavbarModel] = useState(false);
 
-    const [ navbarModel, setNavbarModel ] = useState(false);
+  const handleClickModel = () => {
+    setNavbarModel(!navbarModel);
+  };
 
-    const handleClickModel = () => {
-        setNavbarModel(!navbarModel);
-    }
+  const sideNavbarFunc = () => {
+    setSideNavbarFunc(!sideNavbar)
+  };
 
   return (
     <div className="navbar">
       {/* // navbar-left  */}
       <div className="navbar-left">
-        <div className="navbarHamberger">
+        <div className="navbarHamberger" onClick={sideNavbarFunc}>
           <MenuIcon sx={{ color: "white" }} />
         </div>
 
@@ -73,13 +76,13 @@ const Navbar = () => {
           height={"30px"}
           onClick={handleClickModel}
         />
-        { navbarModel &&
+        {navbarModel && (
           <div className="navbar-model">
             <div className="navbar-model-option">Profile</div>
             <div className="navbar-model-option">Logout</div>
             <div className="navbar-model-option">Login</div>
           </div>
-        }
+        )}
       </div>
     </div>
   );

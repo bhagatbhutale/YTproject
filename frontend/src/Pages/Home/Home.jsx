@@ -1,8 +1,12 @@
 
-const Home = () => {
+import Homepage from "../../Components/Homepage/Homepage"
+import SideNavbar from "../../Components/SideNavbar/SideNavbar"
+import "./Home.css"
+const Home = ({sideNavbar}) => {
   return (
-    <div>
-      Home Page
+    <div className="home" >
+    <SideNavbar sideNavbar={sideNavbar} />
+    <Homepage />
     </div>
   )
 }
