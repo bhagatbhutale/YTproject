@@ -1,0 +1,137 @@
+/* Navbar left part  */
+
+.navbar {
+    height: 56px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    position: fixed;
+    background-color: black;
+    z-index: 10;
+}
+
+.navbar-left {
+    gap: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.navbarHamberger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    /* margin-right: 16px; */
+    cursor: pointer;
+}
+
+.navbar_youtubeimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar_youtubeTitle {
+    font-size: 20px;
+    word-spacing: 0px;
+    letter-spacing: 0px;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* ------------- Left navbar part Ends */
+
+.navbar-middle {
+    display: flex;
+    gap: 10px;
+    width: 50%;
+}
+
+.navbar-searchbar {
+    width : 80%;
+    display: flex;
+}
+
+.nav-search-input {
+    width: 100%;
+    height: 40px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid rgb(58, 57, 57);
+    background-color: #121212;
+    color: white;
+    font-size: 16px;
+    padding-left: 30px;
+
+    &:focus {
+        outline: none;
+    }
+    
+}
+
+.navbar-searchIconBox {
+    cursor: pointer;
+    width: 70px;
+    border: 1px solid rgb(42, 42, 42);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.navbar-Mike {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(42,42,42);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+.navbar-right {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-right-logo {
+    border-radius: 30px;
+}
+
+.navbar-model {
+    position: absolute;
+    top: 35px;
+    width: 100%;
+    z-index: 20;
+    color: white;
+}
+
+.navbar-model-option {
+    background-color: rgb(85, 85, 85);
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(34, 33, 33);
+    }
+}
+
+
