@@ -2,6 +2,8 @@ import "./App.css"
 import Navbar from "./Components/Navbar/Navbar"
 import Home from "./Pages/Home/Home"
 import { useState } from "react"
+import { Route, Routes,  } from "react-router-dom";
+
 const App = () => {
 
   const [ sideNavbar , setSideNavbar ] = useState(true);
