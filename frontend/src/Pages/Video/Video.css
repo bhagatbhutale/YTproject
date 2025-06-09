@@ -232,3 +232,36 @@ display: flex;
 flex-direction: column;
 color: white;
 }
+
+.videoSuggesstionBlock {
+    display: flex;
+    gap: 15px;
+cursor: pointer;
+margin-bottom: 15px;
+}
+
+.videoSuggesstion-Thumbnail {
+    width: 168px;
+    height: 94px;
+}
+
+.videoSuggesstion-Thumbnail-img {
+    width: inherit;
+}
+
+.videoSuggesstion-About {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.videoSuggession-About-titlee {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.videoSuggessionAboutProfile {
+    color: #ffffff9c;
+    font-size: 12px;
+}

@@ -138,14 +138,95 @@ const Video = () => {
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
 
       {/* // Video Suggessition Static  */}
-      <div className="videoSuggession">Video Suggession</div>
+      <div className="videoSuggession">
+        {/* // Video Suggessiion Block  */}
+        <div className="videoSuggesstionBlock">
+          <div className="videoSuggesstion-Thumbnail">
+            <img
+              src="https://i.pinimg.com/736x/ff/87/74/ff87741b48b3aee99b80489c1339487f.jpg"
+              alt="suggection video"
+              className="videoSuggesstion-Thumbnail-img"
+            />
+          </div>
+          <div className="videoSuggesstion-About">
+            <div className="videoSuggession-About-titlee">
+              Top 5 most Populer Video on Youtube Most viewrs
+            </div>
+            <div className="videoSuggessionAboutProfile"> Populer Videos </div>
+            <div className="videoSuggessionAboutProfile">
+              {" "}
+              100M Views. 1 day ago
+            </div>
+          </div>
+        </div>
+
+        <div className="videoSuggesstionBlock">
+          <div className="videoSuggesstion-Thumbnail">
+            <img
+              src="https://i.pinimg.com/736x/ff/87/74/ff87741b48b3aee99b80489c1339487f.jpg"
+              alt="suggection video"
+              className="videoSuggesstion-Thumbnail-img"
+            />
+          </div>
+          <div className="videoSuggesstion-About">
+            <div className="videoSuggession-About-titlee">
+              Top 5 most Populer Video on Youtube Most viewrs
+            </div>
+            <div className="videoSuggessionAboutProfile"> Populer Videos </div>
+            <div className="videoSuggessionAboutProfile">
+              {" "}
+              100M Views. 1 day ago
+            </div>
+          </div>
+        </div>
+
+        <div className="videoSuggesstionBlock">
+          <div className="videoSuggesstion-Thumbnail">
+            <img
+              src="https://i.pinimg.com/736x/ff/87/74/ff87741b48b3aee99b80489c1339487f.jpg"
+              alt="suggection video"
+              className="videoSuggesstion-Thumbnail-img"
+            />
+          </div>
+          <div className="videoSuggesstion-About">
+            <div className="videoSuggession-About-titlee">
+              Top 5 most Populer Video on Youtube Most viewrs
+            </div>
+            <div className="videoSuggessionAboutProfile"> Populer Videos </div>
+            <div className="videoSuggessionAboutProfile">
+              {" "}
+              100M Views. 1 day ago
+            </div>
+          </div>
+        </div>
+
+        <div className="videoSuggesstionBlock">
+          <div className="videoSuggesstion-Thumbnail">
+            <img
+              src="https://i.pinimg.com/736x/ff/87/74/ff87741b48b3aee99b80489c1339487f.jpg"
+              alt="suggection video"
+              className="videoSuggesstion-Thumbnail-img"
+            />
+          </div>
+          <div className="videoSuggesstion-About">
+            <div className="videoSuggession-About-titlee">
+              Top 5 most Populer Video on Youtube Most viewrs
+            </div>
+            <div className="videoSuggessionAboutProfile"> Populer Videos </div>
+            <div className="videoSuggessionAboutProfile">
+              {" "}
+              100M Views. 1 day ago
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
   );
 }

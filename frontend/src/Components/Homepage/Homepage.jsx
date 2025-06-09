@@ -1,4 +1,5 @@
 import "./Homepage.css";
+import { Link } from "react-router-dom";
 const Homepage = ({ sideNavbar }) => {
   const options = [
     "All",
@@ -40,7 +41,7 @@ const Homepage = ({ sideNavbar }) => {
       <div
         className={sideNavbar ? `home-mainPage` : "home-mainPagewithoutSidebar"}
       >
-        <div className="youtube-Videos">
+        <Link to={"/watch/1"} className="youtube-Videos">
           <div className="thubmnailBox">
             <img
               className="youtube-thumbnailPic"
@@ -64,9 +65,9 @@ const Homepage = ({ sideNavbar }) => {
               <div className="youtubeVideo-views">3 Likes</div>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="youtube-Videos">
+        <Link to={"/watch/2"} className="youtube-Videos">
           <div className="thubmnailBox">
             <img
               className="youtube-thumbnailPic"
@@ -90,9 +91,9 @@ const Homepage = ({ sideNavbar }) => {
               <div className="youtubeVideo-views">3 Likes</div>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="youtube-Videos">
+        <Link to={"/watch/3"} className="youtube-Videos">
           <div className="thubmnailBox">
             <img
               className="youtube-thumbnailPic"
@@ -116,9 +117,9 @@ const Homepage = ({ sideNavbar }) => {
               <div className="youtubeVideo-views">3 Likes</div>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="youtube-Videos">
+        <Link to={"/watch/4"} className="youtube-Videos">
           <div className="thubmnailBox">
             <img
               className="youtube-thumbnailPic"
@@ -142,9 +143,9 @@ const Homepage = ({ sideNavbar }) => {
               <div className="youtubeVideo-views">3 Likes</div>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="youtube-Videos">
+        <Link to={"/watch/5"} className="youtube-Videos">
           <div className="thubmnailBox">
             <img
               className="youtube-thumbnailPic"
@@ -168,9 +169,9 @@ const Homepage = ({ sideNavbar }) => {
               <div className="youtubeVideo-views">3 Likes</div>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="youtube-Videos">
+        <div to={"/watch/6"} className="youtube-Videos">
           <div className="thubmnailBox">
             <img
               className="youtube-thumbnailPic"

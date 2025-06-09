@@ -7,6 +7,7 @@ import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PersonIcon from "@mui/icons-material/Person";
+import { Link } from "react-router-dom";
 const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
   const [userPic, setUserPic] = useState(
     "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
@@ -30,10 +31,10 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
           <MenuIcon sx={{ color: "white" }} />
         </div>
 
-        <div className="navbar_youtubeimg">
+        <Link to="/" className="navbar_youtubeimg">
           <YouTubeIcon sx={{ color: "red", fontSize: "34px" }} />
           <div className="navbar_youtubeTitle">YouTube</div>
-        </div>
+        </Link>
       </div>
 
       {/* // navbar-center  */}
