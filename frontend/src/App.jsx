@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Route, Routes,  } from "react-router-dom";
 import Video from "./Pages/Video/Video";
 import Profile from "./Pages/Profile/Profile";
+import VideoUpload from "./Pages/VideoUpload/VideoUpload";
 
 const App = () => {
 
@@ -19,8 +20,9 @@ const App = () => {
       <Navbar setSideNavbarFunc={setSideNavbarFunc} sideNavbar={sideNavbar} />
       <Routes>
         <Route path="/" element={<Home sideNavbar={sideNavbar} />} />
-        <Route path="/watch/:id" element={ <Video /> } />
-        <Route path="/user/:id" element={ <Profile /> } />
+        <Route path="/watch/:id" element={<Video />} />
+        <Route path="/user/:id" element={<Profile sideNavbar={sideNavbar} />} />
+      <Route path="/:id/upload" element={ <VideoUpload /> } />
       </Routes>
     </div>
   );

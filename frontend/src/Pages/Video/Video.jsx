@@ -1,5 +1,6 @@
 
 import "./Video.css"
+import { Link } from "react-router-dom";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 // Video Page
@@ -28,7 +29,7 @@ const Video = () => {
           <div className="video-youtubeTitle">{"Javascript for Beginner"}</div>
           <div className="youtube-video-ProfileBlock">
             <div className="youtube-video-ProfileBlock-left">
-              <div className="youtube-video-ProfileBlock-left-img">
+              <Link to={"/user/1"} className="youtube-video-ProfileBlock-left-img">
                 <img
                   className="youtube-video-ProfileBlock-left-image"
                   src={
@@ -36,7 +37,7 @@ const Video = () => {
                   }
                   alt=""
                 />
-              </div>
+              </Link>
               <div className="youtubeVideo-subView">
                 <div className="youtubePostProfileName">{"User1"}</div>
                 <div className="youtubePostProfileSubs">{"2025-07-06"}</div>

@@ -7,13 +7,22 @@ import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PersonIcon from "@mui/icons-material/Person";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
   const [userPic, setUserPic] = useState(
     "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
   );
 
+  // profilePage Nevigate
+  const nevigate = useNavigate();
+
+  const handleProfile = () => {
+    nevigate("/user/1")
+    setNavbarModel(false)
+  }
+
   const [navbarModel, setNavbarModel] = useState(false);
+  const [ login , setLogin ] = useState(false);
 
   const handleClickModel = () => {
     setNavbarModel(!navbarModel);
@@ -22,6 +31,16 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
   const sideNavbarFunc = () => {
     setSideNavbarFunc(!sideNavbar)
   };
+
+  // login , logout 
+  const onClickOfPopUpOption = (button) => {
+  if(button == "login") {
+    setLogin(true);
+  } else {
+
+  }
+  }
+
 
   return (
     <div className="navbar">
@@ -57,11 +76,11 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
 
       {/* // navbar-right  */}
       <div className="navbar-right">
-        <div className="navbar-videoCall">
+        <Link to={"/22/upload"} className="navbar-videoCall">
           <VideoCallIcon
             sx={{ color: "white", fontSize: "28px", cursor: "pointer" }}
           />
-        </div>
+        </Link>
         <div className="navbar-notification">
           <NotificationsIcon
             sx={{ color: "white", fontSize: "28px", cursor: "pointer" }}
@@ -79,12 +98,29 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
         />
         {navbarModel && (
           <div className="navbar-model">
-            <div className="navbar-model-option">Profile</div>
-            <div className="navbar-model-option">Logout</div>
-            <div className="navbar-model-option">Login</div>
+            <div className="navbar-model-option" onClick={handleProfile}>
+              Profile
+            </div>
+            <div
+              className="navbar-model-option"
+              onClick={() => onClickOfPopUpOption("logout")}
+            >
+              Logout
+            </div>
+            <div
+              className="navbar-model-option"
+              onClick={() => onClickOfPopUpOption("login")}
+            >
+              Login
+            </div>
           </div>
         )}
       </div>
+
+      {
+        
+      }
+
     </div>
   );
 };
