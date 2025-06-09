@@ -8,6 +8,7 @@ import VideoCallIcon from "@mui/icons-material/VideoCall";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PersonIcon from "@mui/icons-material/Person";
 import { Link , useNavigate} from "react-router-dom";
+import Login from "../Login/Login";
 const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
   const [userPic, setUserPic] = useState(
     "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
@@ -34,11 +35,17 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
 
   // login , logout 
   const onClickOfPopUpOption = (button) => {
+    setNavbarModel(false)
   if(button == "login") {
     setLogin(true);
   } else {
 
   }
+  }
+
+  //login model close after clicking the Cancle btn
+  const setLoginModel = () => {
+    setLogin(false)
   }
 
 
@@ -117,10 +124,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
         )}
       </div>
 
-      {
-        
-      }
-
+      {login && <Login setLoginModel={setLoginModel} />}
     </div>
   );
 };
