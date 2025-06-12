@@ -3,8 +3,14 @@ import "./Video.css"
 import { Link } from "react-router-dom";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import { useState } from "react";
 // Video Page
 const Video = () => {
+
+  // comment handle state
+  const [ message, setMessage] = useState("");
+  console.log(message)
+
   return (
     <div className="video">
       <div className="videoPostSection">
@@ -76,6 +82,8 @@ const Video = () => {
                   className="addCommentInput"
                   placeholder="Add a Comment.."
                   type="text"
+                  value={message}
+                  onChange={(e) => {setMessage(e.target.value)}}
                 />
                 <div className="cancleSubmitButton">
                   <div className="cancleComment">Cancle</div>

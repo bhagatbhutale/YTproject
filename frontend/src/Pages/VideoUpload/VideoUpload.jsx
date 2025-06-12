@@ -1,9 +1,64 @@
-
-
-import "./VideoUpload.css"
+import "./VideoUpload.css";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
+// circular Progress Before loading uploaded the videos and img
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 const VideoUpload = () => {
+  // videoupload form handle
+  const [inputField, setInputField] = useState({
+    title: "",
+    description: "",
+    videoLink: "",
+    thumbnail: "",
+    videoType: "",
+  });
+
+  // loder state 
+  const [ loader, setLoader ] = useState(false)
+
+  const handleOnChangeInputField = (event, name) => {
+    setInputField({
+      ...inputField,
+      [name]: event.target.value,
+    });
+  };
+
+  // upload thumbnail img using cloudnary
+  const uploadImage = async (e, type) => {
+    setLoader(true)
+    console.log("Uploading");
+
+    const file = e.target.files[0];
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "youtube-clone");
+
+    try {
+      const response = await axios.post(
+        // cloudinary = dfmpevmcj
+        `https://api.cloudinary.com/v1_1/dfmpevmcj/${type}/upload`,
+        data
+      );
+      const url = response.data.secure_url;
+      setLoader(false);
+      let val = type === "image" ? "thumbnail" : "videoLink";
+
+      setInputField({
+        ...inputField, [val]: url,
+      });
+    } catch (err) {
+      setLoader(false);
+      console.error("Upload failed:", err.response?.data || err.message);
+    }
+  };
+
+  console.log(inputField)
+
   return (
     <div className="videoUpload">
       <div className="uploadBox">
@@ -15,39 +70,65 @@ const VideoUpload = () => {
         <div className="uploadForm">
           <input
             type="text"
-            placeholder="Type of Video"
+            placeholder="Title of Video"
             className="uploadFormInput"
+            value={inputField.title}
+            onChange={(e) => {
+              handleOnChangeInputField(e, "title");
+            }}
           />
           <input
             type="text"
-            placeholder="Type of Video"
+            placeholder="Description"
             className="uploadFormInput"
+            value={inputField.description}
+            onChange={(e) => {
+              handleOnChangeInputField(e, "description");
+            }}
           />
           <input
             type="text"
-            placeholder="Type of Video"
+            placeholder="Category"
             className="uploadFormInput"
+            value={inputField.videoType}
+            onChange={(e) => {
+              handleOnChangeInputField(e, "videoType");
+            }}
           />
           <div>
-            Thumbnail <input type="file" accept="image/*" />{" "}
+            Thumbnail{" "}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => uploadImage(e, "image")}
+            />
           </div>
           <div>
-            {" "}
-            Video <input
+            Video{" "}
+            <input
               type="file"
               accept="video/mp4, video/webm, video/*"
-            />{" "}
+              onChange={(e) => uploadImage(e, "video")}
+            />
           </div>
+          {/* // loader  */}
+          {loader && (
+            <Box sx={{ display: "flex" }}>
+              <CircularProgress />
+            </Box>
+          )}
         </div>
 
-{/* // Btns upload and home  */}
+        {/* // Btns upload and home  */}
         <div className="uploadBtns">
           <div className="uploadBtn-form">Upload</div>
-          <Link to={"/"} className="uploadBtn-form">Home</Link>
+          <Link to={"/"} className="uploadBtn-form">
+            Home
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default VideoUpload
+export default VideoUpload;

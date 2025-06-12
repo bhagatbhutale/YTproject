@@ -6,6 +6,7 @@ import { Route, Routes,  } from "react-router-dom";
 import Video from "./Pages/Video/Video";
 import Profile from "./Pages/Profile/Profile";
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
+import SignUp from "./Pages/SignUp/SignUp";
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/watch/:id" element={<Video />} />
         <Route path="/user/:id" element={<Profile sideNavbar={sideNavbar} />} />
       <Route path="/:id/upload" element={ <VideoUpload /> } />
+      <Route path="/signup" element={ <SignUp /> } />
       </Routes>
     </div>
   );
