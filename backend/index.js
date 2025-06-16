@@ -10,11 +10,12 @@ const connectDB = require("./Connection/conn")
 // routes imported here
 const AuthRoute = require("./Routes/user");
 const VideoRoutes = require("./Routes/video")
-
+const CommentRoutes = require("./Routes/comment");
 
 
 app.use("/auth", AuthRoute);
 app.use("/api", VideoRoutes)
+app.use("/commentApi", CommentRoutes)
 
 
 

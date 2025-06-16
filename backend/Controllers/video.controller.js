@@ -1,5 +1,7 @@
 const Video = require("../Models/video");
 
+
+// videp Upload
 exports.uploadVideo = async (req, res) => {
     try {
       const { title, description, videoLink, videoType, thumbnail } = req.body;
