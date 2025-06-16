@@ -28,7 +28,6 @@ const videoSchema = new mongoose.Schema(
     videoType: {
       type: String,
     //   enum: ["short", "full"],
-      required: true,
       default : "All"
     },
     like: {

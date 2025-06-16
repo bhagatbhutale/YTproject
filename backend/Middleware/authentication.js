@@ -13,7 +13,7 @@ const auth = async (req, res, next) => {
   } else {
     try {
       const decode = jwt.verify(token, "Its_My_Secret_Key");
-      req.user = await User.findOne(decode.userId).select("-password");
+      req.user = await User.findById(decode.userId).select("-password");
       next();
     } catch (err) {
       res.status(401).send({
@@ -22,3 +22,5 @@ const auth = async (req, res, next) => {
     }
   }
 };
+
+module.exports = auth
