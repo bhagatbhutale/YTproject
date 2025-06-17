@@ -1,11 +1,36 @@
-import { Link } from "react-router-dom"
-import SideNavbar from "../../Components/SideNavbar/SideNavbar"
-import Sidenavbar from "../../Components/SideNavbar/SideNavbar"
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import SideNavbar from "../../Components/SideNavbar/SideNavbar";
+import Sidenavbar from "../../Components/SideNavbar/SideNavbar";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import axios from "axios";
 
-import "./Profile.css"
+import "./Profile.css";
 // Profile Page
-const Profile = ({sideNavbar}) => {
+const Profile = ({ sideNavbar }) => {
+  const { id } = useParams();
+  // profile page fetching from backend
+  const [data, setData] = useState([]);
+  const [user, setUser] = useState(null);
+
+  const fetchProfileData = async (req, res) => {
+    await axios
+      .get(`http://localhost:7001/api/${id}/channel`)
+      .then((response) => {
+        console.log(response);
+        setData(response.data.video);
+        setUser(response.data.video[0]?.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+  // ---------------------------------------------------------------------
+
   return (
     <div className="profile">
       <SideNavbar sideNavbar={sideNavbar} />
@@ -15,15 +40,19 @@ const Profile = ({sideNavbar}) => {
         <div className="profile-TopSection">
           <div className="profile-TopSection-Profile">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png"
-              alt="profileimage"
+              src={ user?.profilePic }
+              alt="UserProfileimage"
               className="profile-top-section-img"
             />
           </div>
           <div className="profileTop-Section-About">
-            <div className="profileTop-SectionAbout-Name">TheCodingExpress</div>
-            <div className="profileTop-Section-Info">@User1 4 Videos</div>
-            <div className="profileTop-Section-Info">About section of User</div>
+            <div className="profileTop-SectionAbout-Name">
+              {user?.channelName}
+            </div>
+            <div className="profileTop-Section-Info">
+              {user?.userName} . {data.length} Videos
+            </div>
+            <div className="profileTop-Section-Info">{user?.about}</div>
           </div>
         </div>
 
@@ -34,62 +63,33 @@ const Profile = ({sideNavbar}) => {
 
           <div className="profileee-Videos">
             {/* // video for a div  */}
-            <Link to={"/watch/1"} className="profileVideo-Block">
-              <div className="profileVideo-block-thumbnail">
-                <img
-                  className="profileVideo-block-thumbanai-img"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd4bhrAkVfa76OBXZ3B4By_N2L0B-kdbZ89Q&s"
-                  alt=""
-                />
-              </div>
-              <div className="profileVideo-Block-details">
-                <div className="profileVideo-Block-details-name">
-                  Video Title
-                </div>
-                <div className="profileVideo-Block-details-about">
-                  Create at 2025-05-14
-                </div>
-              </div>
-            </Link>
-            <Link to={"/watch/2"} className="profileVideo-Block">
-              <div className="profileVideo-block-thumbnail">
-                <img
-                  className="profileVideo-block-thumbanai-img"
-                  src="https://i.pinimg.com/736x/cc/0c/85/cc0c850a792afd4825cb05e1b9ea37d3.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="profileVideo-Block-details">
-                <div className="profileVideo-Block-details-name">
-                  Video Title
-                </div>
-                <div className="profileVideo-Block-details-about">
-                  Create at 2025-05-14
-                </div>
-              </div>
-            </Link>
-            <Link to={"/watch/3"} className="profileVideo-Block">
-              <div className="profileVideo-block-thumbnail">
-                <img
-                  className="profileVideo-block-thumbanai-img"
-                  src="https://i.pinimg.com/736x/87/79/97/87799709ad434ca38c9d84a4c2b1af7b.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="profileVideo-Block-details">
-                <div className="profileVideo-Block-details-name">
-                  Video Title
-                </div>
-                <div className="profileVideo-Block-details-about">
-                  Create at 2025-05-14
-                </div>
-              </div>
-            </Link>
+
+            {data.map((item, key) => {
+              return (
+                <Link to={`/watch/${item._id}`} className="profileVideo-Block">
+                  <div className="profileVideo-block-thumbnail">
+                    <img
+                      className="profileVideo-block-thumbanai-img"
+                      src={item?.thumbnail}
+                      alt="videos"
+                    />
+                  </div>
+                  <div className="profileVideo-Block-details">
+                    <div className="profileVideo-Block-details-name">
+                      { item?.title }
+                    </div>
+                    <div className="profileVideo-Block-details-about">
+                      Create at { item?.createdAt.slice(0, 10) }
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Profile
+export default Profile;

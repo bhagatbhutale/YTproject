@@ -1,16 +1,26 @@
 import "./App.css"
 import Navbar from "./Components/Navbar/Navbar"
 import Home from "./Pages/Home/Home"
-import { useState } from "react"
+import { useState , useEffect} from "react"
 import { Route, Routes,  } from "react-router-dom";
 import Video from "./Pages/Video/Video";
 import Profile from "./Pages/Profile/Profile";
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
 import SignUp from "./Pages/SignUp/SignUp";
+import axios from "axios"
 
 const App = () => {
-
   const [ sideNavbar , setSideNavbar ] = useState(true);
+
+  // backend Data Comming or Not Checking ------
+  // useEffect(() => {
+  //   axios.get("http://localhost:7001/api/allVideo").then(res => {
+  //     console.log(res)
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
+  // }, [])
+  // -------------------------------------
   
   const setSideNavbarFunc = (value) => {
     setSideNavbar(value)

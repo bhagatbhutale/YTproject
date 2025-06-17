@@ -3,6 +3,8 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+// react-toastify imported here 
+import { toast , ToastContainer} from "react-toastify"
 const SignUp = () => {
   // img State
   const [uploadImageUrl, setUploadedImageUrl] = useState(
@@ -28,11 +30,11 @@ const SignUp = () => {
   const uploadImage = async (e) => {
     console.log("Uploading");
 
-    const file = e.target.files[0]; // ✅ Correct way to get the File object
+    const file = e.target.files[0];  
 
     const data = new FormData();
-    data.append("file", file); // ✅ Attach file object, not string path
-    data.append("upload_preset", "youtube-clone"); // ✅ Your Cloudinary preset
+    data.append("file", file); 
+    data.append("upload_preset", "youtube-clone"); // Cloudinary
 
     try {
       const response = await axios.post(
@@ -50,6 +52,9 @@ const SignUp = () => {
   };
 
   console.log(signUpField);
+
+  // Backend SignUp user Post in DataBase
+
 
   return (
     <div className="signup">
@@ -112,7 +117,7 @@ const SignUp = () => {
           </div>
 
           <div className="signUpBtns">
-            <div className="signUpBtn">SignUp</div>
+            <div className="signUpBtn" onClick={() => handleSignUp} >SignUp</div>
             <Link to={"/"} className="signUpBtn">
               HomePage
             </Link>

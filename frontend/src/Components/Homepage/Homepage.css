@@ -57,6 +57,7 @@ cursor: pointer;
     grid-template-columns: 440px 440px 450px;
     padding: 90px 0 20px 0;
     background-color: black;
+    height: 100vh;
 }
 
 .home-mainPagewithoutSidebar {
