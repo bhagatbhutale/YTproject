@@ -8,7 +8,11 @@ import VideoCallIcon from "@mui/icons-material/VideoCall";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PersonIcon from "@mui/icons-material/Person";
 import { Link , useNavigate} from "react-router-dom";
+// react-toastify imported here
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 import Login from "../Login/Login";
+import axios from "axios";
 const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
   const [userPic, setUserPic] = useState(
     "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
@@ -21,7 +25,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
     // after clicking th eProfilePic then Render 
     let userId = localStorage.getItem("userId")
 
-    nevigate("/user/1")
+    nevigate(`/user/${userId}`)
     setNavbarModel(false)
   }
 
@@ -36,14 +40,30 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
     setSideNavbarFunc(!sideNavbar)
   };
 
-  // login , logout 
+  // login , logout  with Fetching Logout Api 
   const onClickOfPopUpOption = (button) => {
     setNavbarModel(false)
   if(button == "login") {
     setLogin(true);
   } else {
+    // Logout user
 
+    localStorage.clear();
+    getLogoutFunc()
+    setTimeout(() => {
+      nevigate("/")
+      window.location.reload()
+    }, 2000)
   }
+  }
+// logout function
+  const getLogoutFunc = async() => {
+    axios.post("http://localhost:7001/auth/logout", {}, { withCredentials: true }).then((res) => {
+      toast.success("You are Logout")
+      console.log("Logout")
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   //login model close after clicking the Cancle btn
@@ -62,9 +82,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
     if(userProfilePic !== null) {
       setUserPic(userProfilePic)
     }
-  }, [])
-
-
+  }, []) 
 
 
 
@@ -122,6 +140,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
           height={"30px"}
           onClick={handleClickModel}
         />
+
         {navbarModel && (
           <div className="navbar-model">
             {/* // user is Logged in Then See a ProfileSection  */}

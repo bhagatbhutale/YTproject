@@ -1,7 +1,7 @@
 .homepage {
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     flex: 1;
     margin-left: 262px;
     min-height: 100vh;
@@ -10,7 +10,7 @@
 .fullhomepage {
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     flex: 1;
     min-height: 100vh;
     

@@ -63,7 +63,8 @@ exports.signIn = async (req, res) => {
       res.send({
         message: "Logged in Successfully",
         success: true,
-        token
+        token,
+        user
       });
     } else {
       res.status(400).send({

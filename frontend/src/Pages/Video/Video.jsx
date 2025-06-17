@@ -5,6 +5,9 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+// react-toastify imported here
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 // Video Page
 const Video = () => {
   // comment handle state
@@ -48,6 +51,26 @@ const Video = () => {
     fetchVideoById();
     getCommentByVideoId()
   }, []);
+
+  // Post Comment Handle Api  Backend
+  const handleCommentFunc = async () => {
+    const body = {
+      "message": message,
+      "video": id
+    }
+    await axios.post(
+      "http://localhost:7001/commentApi/comment",
+      body, 
+      {withCredentials: true}
+    ).then((res) => {
+      console.log(res)
+      const newComment = res.data.comment
+      setComments([ newComment, ...comments ])
+      setMessage("")
+    }).catch(err => {
+      toast.error("Please Login First")
+    })
+  }
 
   return (
     <div className="video">
@@ -126,7 +149,7 @@ const Video = () => {
                 />
                 <div className="cancleSubmitButton">
                   <div className="cancleComment">Cancle</div>
-                  <div className="cancleComment">Comment</div>
+                  <div className="cancleComment" onClick={handleCommentFunc} >Comment</div>
                 </div>
               </div>
             </div>
@@ -248,6 +271,7 @@ const Video = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

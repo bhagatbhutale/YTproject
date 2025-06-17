@@ -1,9 +1,12 @@
 import "./VideoUpload.css";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
+// react-toastify imported here
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 // circular Progress Before loading uploaded the videos and img
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -17,8 +20,8 @@ const VideoUpload = () => {
     videoType: "",
   });
 
-  // loder state 
-  const [ loader, setLoader ] = useState(false)
+  // loder state
+  const [loader, setLoader] = useState(false);
 
   const handleOnChangeInputField = (event, name) => {
     setInputField({
@@ -29,7 +32,7 @@ const VideoUpload = () => {
 
   // upload thumbnail img using cloudnary
   const uploadImage = async (e, type) => {
-    setLoader(true)
+    setLoader(true);
     console.log("Uploading");
 
     const file = e.target.files[0];
@@ -49,7 +52,8 @@ const VideoUpload = () => {
       let val = type === "image" ? "thumbnail" : "videoLink";
 
       setInputField({
-        ...inputField, [val]: url,
+        ...inputField,
+        [val]: url,
       });
     } catch (err) {
       setLoader(false);
@@ -57,7 +61,34 @@ const VideoUpload = () => {
     }
   };
 
-  console.log(inputField)
+  console.log(inputField);
+
+  // -----------------------------------------------------Backend Here
+  // User is Logged in then Show a Upload Video Option
+  const navigate = useNavigate();
+  useEffect(() => {
+    let isLogin = localStorage.getItem("userId");
+    if (isLogin === null) {
+      navigate("/");
+    }
+  }, []);
+
+  const handleSubmitFunc = async (req, res) => {
+    setLoader(true)
+    await axios
+      .post("http://localhost:7001/api/video", inputField, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        setLoader(false)
+        navigate("/")
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoader(false)
+      });
+  };
 
   return (
     <div className="videoUpload">
@@ -96,7 +127,7 @@ const VideoUpload = () => {
             }}
           />
           <div>
-            Thumbnail{" "}
+            Thumbnail
             <input
               type="file"
               accept="image/*"
@@ -104,7 +135,7 @@ const VideoUpload = () => {
             />
           </div>
           <div>
-            Video{" "}
+            Video
             <input
               type="file"
               accept="video/mp4, video/webm, video/*"
@@ -121,12 +152,15 @@ const VideoUpload = () => {
 
         {/* // Btns upload and home  */}
         <div className="uploadBtns">
-          <div className="uploadBtn-form">Upload</div>
+          <div className="uploadBtn-form" onClick={handleSubmitFunc}>
+            Upload
+          </div>
           <Link to={"/"} className="uploadBtn-form">
             Home
           </Link>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

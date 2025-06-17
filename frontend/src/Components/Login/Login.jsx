@@ -29,7 +29,7 @@ const Login = ({ setLoginModel }) => {
   // Backend Api Inteergition is Here ---------------------
   const handleLoginFunc = async (req, res) => {
     setLoader(true)
-    await axios.post("http://localhost:7001/auth/login", loginField).then((res) => {
+    await axios.post("http://localhost:7001/auth/login", loginField, { withCredentials: true }).then((res) => {
     
       setLoader(false)
       // data store in LocalStorage
