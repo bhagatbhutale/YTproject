@@ -3,10 +3,12 @@ import "./Navbar.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PersonIcon from "@mui/icons-material/Person";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { Link , useNavigate} from "react-router-dom";
 // react-toastify imported here
 import { toast, ToastContainer } from "react-toastify";
@@ -116,7 +118,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
             className="nav-search-input"
             type="text"
             placeholder="search here ..."
-            onChange={(e) => dispatch(setSearchTerm(e.target.value)) }
+            onChange={(e) => dispatch(setSearchTerm(e.target.value))}
           />
           <div className="navbar-searchIconBox">
             <SearchIcon sx={{ color: "black", fontSize: "28px" }} />
@@ -129,11 +131,16 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
 
       {/* // navbar-right  */}
       <div className="navbar-right">
-        <Link to={"/22/upload"} className="navbar-videoCall">
-          <VideoCallIcon
-            sx={{ color: "black", fontSize: "28px", cursor: "pointer" }}
-          />
-        </Link>
+
+        {/* upload video button  */}
+        {isLoggedIn && (
+          <Link to={"/22/upload"} className="navbar-videoCall">
+            <VideoCallIcon
+              sx={{ color: "black", fontSize: "28px", cursor: "pointer" }}
+            />
+          </Link>
+        )}
+
         <div className="navbar-notification">
           <NotificationsIcon
             sx={{ color: "black", fontSize: "28px", cursor: "pointer" }}
@@ -142,20 +149,30 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
         {/* <div className="navbar-person">
                 <PersonIcon sx={{ color: "white", fontSize: "28px" , cursor: "pointer" }} />
             </div> */}
-        <img
-          className="navbar-right-logo"
-          src={userPic}
-          width={`30px`}
-          height={"30px"}
-          onClick={handleClickModel}
-        />
+
+        {!isLoggedIn && (
+          <div className="signIn-btn" onClick={handleClickModel}>
+            <AccountCircleIcon className="sign-In-Icon" /> Sign In
+          </div>
+        )}
+
+        {isLoggedIn && (
+          <img
+            className="navbar-right-logo"
+            src={userPic}
+            width={`30px`}
+            height={"30px"}
+            onClick={handleClickModel}
+          />
+        )}
 
         {navbarModel && (
           <div className="navbar-model">
             {/* // user is Logged in Then See a ProfileSection  */}
             {isLoggedIn && (
               <div className="navbar-model-option" onClick={handleProfile}>
-                Profile
+                Your Profile Page
+                <AccountCircleIcon />
               </div>
             )}
 
@@ -165,6 +182,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
                 onClick={() => onClickOfPopUpOption("logout")}
               >
                 Logout
+                <LogoutIcon />
               </div>
             )}
 

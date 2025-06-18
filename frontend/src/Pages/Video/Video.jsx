@@ -2,6 +2,8 @@ import "./Video.css";
 import { Link } from "react-router-dom";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import DownloadIcon from "@mui/icons-material/Download";
+import ShareIcon from "@mui/icons-material/Share";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -100,13 +102,17 @@ const Video = () => {
               >
                 <img
                   className="youtube-video-ProfileBlock-left-image"
-                  src={data?.user?.profilePic }
+                  src={data?.user?.profilePic}
                   alt=""
                 />
               </Link>
               <div className="youtubeVideo-subView">
-                <div className="youtubePostProfileName">{data?.user?.channelName}</div>
-                <div className="youtubePostProfileSubs">{data?.user?.createdAt.slice(0, 10)}</div>
+                <div className="youtubePostProfileName">
+                  {data?.user?.channelName}
+                </div>
+                <div className="youtubePostProfileSubs">
+                  {data?.user?.createdAt.slice(0, 10)}
+                </div>
               </div>
               <div className="subscribeBtnYoutube">Subscribe</div>
             </div>
@@ -114,22 +120,40 @@ const Video = () => {
             <div className="youtubeVideo-LikeBlock">
               <div className="youtubeVideo-likeBlock-Like">
                 <ThumbUpOffAltIcon />
-                <div className="youtube-video-likeBlock-NoOfLikes">{data?.like}</div>
+                <div className="youtube-video-likeBlock-NoOfLikes">
+                  {data?.like}
+                </div>
               </div>
               <div className="youtubeVideo-Divider"></div>
               <div className="youtubeVideo-likeBlock-Like">
                 <ThumbDownOffAltIcon />
               </div>
             </div>
+
+            <div className="youtubeVideo-LikeBlock">
+              <div className="youtubeVideo-likeBlock-Like">
+                <ShareIcon />
+                <div className="youtube-video-likeBlock-NoOfLikes">Share</div>
+              </div>
+            </div>
+
+            <div className="youtubeVideo-LikeBlock">
+              <div className="youtubeVideo-likeBlock-Like">
+                <DownloadIcon />
+                <div className="youtube-video-likeBlock-NoOfLikes">Download</div>
+              </div>
+            </div>
           </div>
 
           <div className="youtube-video-About">
-            <div>{ data?.createdAt.slice(0, 10) }</div>
-            <div>{ data?.description }</div>
+            <div>{data?.createdAt.slice(0, 10)}</div>
+            <div>{data?.description}</div>
           </div>
 
           <div className="youtubeComment-Section">
-            <div className="youtubeComment-Section-Title">{comments.length} Comments</div>
+            <div className="youtubeComment-Section-Title">
+              {comments.length} Comments
+            </div>
 
             <div className="youtubeSelfComment">
               <img
@@ -149,7 +173,9 @@ const Video = () => {
                 />
                 <div className="cancleSubmitButton">
                   <div className="cancleComment">Cancle</div>
-                  <div className="cancleComment" onClick={handleCommentFunc} >Comment</div>
+                  <div className="cancleComment" onClick={handleCommentFunc}>
+                    Comment
+                  </div>
                 </div>
               </div>
             </div>
@@ -157,33 +183,31 @@ const Video = () => {
             <div className="youtubeOthersComments">
               {/* // Comment Section  */}
 
-              {
-                comments.map((item, index) => {
-                  return (
-                    <div className="youtubeSelfComment">
-                      <img
-                        className="video-youtubeSelfCommentProfile"
-                        src={item?.user?.profilePic}
-                        alt="userImg"
-                      />
-                      <div className="others-CommentSection">
-                        <div className="otherComment-Section-header">
-                          <div className="channelName-COmment">{item?.user?.channelName}</div>
-                          <div className="commentTiming-Others">{ item?.createdAt.slice(0, 10) }</div>
+              {comments.map((item, index) => {
+                return (
+                  <div className="youtubeSelfComment">
+                    <img
+                      className="video-youtubeSelfCommentProfile"
+                      src={item?.user?.profilePic}
+                      alt="userImg"
+                    />
+                    <div className="others-CommentSection">
+                      <div className="otherComment-Section-header">
+                        <div className="channelName-COmment">
+                          {item?.user?.channelName}
                         </div>
-
-                        <div className="otherCommentSectionComment">
-                        {item?.message}
+                        <div className="commentTiming-Others">
+                          {item?.createdAt.slice(0, 10)}
                         </div>
                       </div>
+
+                      <div className="otherCommentSectionComment">
+                        {item?.message}
+                      </div>
                     </div>
-                  );
-                })
-              }
-
-             
-
-            
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

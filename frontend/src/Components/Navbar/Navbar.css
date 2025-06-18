@@ -104,30 +104,53 @@
     
 }
 
+.signIn-btn {
+    padding: 4px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(176, 176, 208);
+    border-radius: 500px;
+    cursor: pointer;
+    /* font-weight: 600; */
+    gap: 5px;
+    &:hover {
+        background-color: rgb(247, 245, 245);
+    }
+}
+.sign-In-Icon {
+    /* color: coral; */
+}
 
 .navbar-right {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
 .navbar-right-logo {
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 .navbar-model {
     position: absolute;
     top: 35px;
-    width: 100%;
+    right: 5px;
+    width: 200%;
+    height: 318%;
     z-index: 20;
     color: black;
-    background-color:darkorange;
+    background-color:blanchedalmond;
+    padding: 10px;
 }
 
 .navbar-model-option {
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
     cursor: pointer;
     &:hover {
         background-color: white;

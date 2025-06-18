@@ -3,8 +3,8 @@
     display: flex;
     padding: 30px 0;
     justify-content: center;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .videoPostSection {
@@ -68,13 +68,13 @@
 
 .youtubePostProfileSubs {
     font-size: 14px;
-    color: #AAAAAA;
+    color: #413b3b;
 }
 
 /* subscribe button */
 .subscribeBtnYoutube {
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     padding: 0px 16px;
     border-radius: 18px;
     display: flex;
@@ -160,12 +160,12 @@ width: 100%;
 
 .addCommentInput {
     width: 100%;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     height: 35px;
     border: none;
     font-size: 16px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid black;
     &:focus {
         outline: none;
     }
@@ -187,8 +187,8 @@ width: 100%;
     border: 1px solid;
     cursor: pointer;
     &:hover {
-        background-color: white;
-        color: black;
+        background-color: black;
+        color: white;
     }
 }
 
@@ -230,7 +230,7 @@ padding: 10px 15px;
 gap: 15px;
 display: flex;
 flex-direction: column;
-color: white;
+color: black;
 }
 
 .videoSuggesstionBlock {
@@ -262,6 +262,6 @@ margin-bottom: 15px;
 }
 
 .videoSuggessionAboutProfile {
-    color: #ffffff9c;
+    color: black;
     font-size: 12px;
 }

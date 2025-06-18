@@ -1,0 +1,18 @@
+
+.notLogin-Page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+  }
+  
+  .not-login-div {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+  }
