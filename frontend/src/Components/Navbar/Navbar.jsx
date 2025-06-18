@@ -13,7 +13,15 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 import Login from "../Login/Login";
 import axios from "axios";
+// redux used for Search Functionality
+import { useDispatch } from "react-redux"
+import { setSearchTerm } from "../../Redux/searchSlice"
+
 const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
+
+  // search videos by title using redux 
+  const dispatch = useDispatch()
+
   const [userPic, setUserPic] = useState(
     "https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
   );
@@ -91,7 +99,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
       {/* // navbar-left  */}
       <div className="navbar-left">
         <div className="navbarHamberger" onClick={sideNavbarFunc}>
-          <MenuIcon sx={{ color: "white" }} />
+          <MenuIcon sx={{ color: "black" }} />
         </div>
 
         <Link to="/" className="navbar_youtubeimg">
@@ -108,9 +116,10 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
             className="nav-search-input"
             type="text"
             placeholder="search here ..."
+            onChange={(e) => dispatch(setSearchTerm(e.target.value)) }
           />
           <div className="navbar-searchIconBox">
-            <SearchIcon sx={{ color: "white", fontSize: "28px" }} />
+            <SearchIcon sx={{ color: "black", fontSize: "28px" }} />
           </div>
         </div>
         <div className="navbar-Mike">
@@ -122,12 +131,12 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
       <div className="navbar-right">
         <Link to={"/22/upload"} className="navbar-videoCall">
           <VideoCallIcon
-            sx={{ color: "white", fontSize: "28px", cursor: "pointer" }}
+            sx={{ color: "black", fontSize: "28px", cursor: "pointer" }}
           />
         </Link>
         <div className="navbar-notification">
           <NotificationsIcon
-            sx={{ color: "white", fontSize: "28px", cursor: "pointer" }}
+            sx={{ color: "black", fontSize: "28px", cursor: "pointer" }}
           />
         </div>
         {/* <div className="navbar-person">

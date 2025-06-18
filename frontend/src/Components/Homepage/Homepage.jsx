@@ -2,7 +2,13 @@ import "./Homepage.css";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 const Homepage = ({ sideNavbar }) => {
+
+  // Search a Video by title
+  const searchTerm = useSelector((state) => state.search.term);
+
+
 
   // all Videos Fetching from Backend ----
   const [ data, setData ] = useState([])
@@ -17,6 +23,12 @@ const Homepage = ({ sideNavbar }) => {
         console.log(err);
       });
   }, []);
+
+
+  // Searching Function 
+  const filteredVideos = data.filter((item) =>
+    item?.title?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const options = [
     "All",
@@ -58,41 +70,37 @@ const Homepage = ({ sideNavbar }) => {
       <div
         className={sideNavbar ? `home-mainPage` : "home-mainPagewithoutSidebar"}
       >
+        {filteredVideos.map((item, index) => {
+          return (
+            <Link to={`/watch/${item._id}`} className="youtube-Videos">
+              <div className="thubmnailBox">
+                <img
+                  className="youtube-thumbnailPic"
+                  src={item.thumbnail}
+                  alt="thumbnail"
+                />
+                <div className="youtube-timingThumbnail">15:40</div>
+              </div>
 
-        {
-          data?.map((item, index) => {
-            return (
-              <Link to={`/watch/${item._id}`} className="youtube-Videos">
-                <div className="thubmnailBox">
+              <div className="youtube-TitleBox">
+                <div className="youtubeTitleBoxProfile">
                   <img
-                    className="youtube-thumbnailPic"
-                    src={item.thumbnail}
-                    alt="thumbnail"
+                    className="youtube-thumbnail-Profile"
+                    src={item?.user?.profilePic}
+                    alt="Profile"
                   />
-                  <div className="youtube-timingThumbnail">15:40</div>
                 </div>
-
-                <div className="youtube-TitleBox">
-                  <div className="youtubeTitleBoxProfile">
-                    <img
-                      className="youtube-thumbnail-Profile"
-                      src={item?.user?.profilePic}
-                      alt="Profile"
-                    />
+                <div className="youtubeTitleBox-Title">
+                  <div className="youtube-videoTitle">{item?.title}</div>
+                  <div className="youtube-channeName">
+                    {item?.user?.channelName}
                   </div>
-                  <div className="youtubeTitleBox-Title">
-                    <div className="youtube-videoTitle">{item?.title}</div>
-                    <div className="youtube-channeName">{ item?.user?.channelName }</div>
-                    <div className="youtubeVideo-views"> { item?.like }</div>
-                  </div>
+                  <div className="youtubeVideo-views"> {item?.like}</div>
                 </div>
-              </Link>
-            );
-          })
-        }
-
-        
-
+              </div>
+            </Link>
+          );
+        })}
 
         {/* ----------------------------------------------------------------------------     */}
         {/* <Link to={"/watch/2"} className="youtube-Videos">
@@ -201,31 +209,6 @@ const Homepage = ({ sideNavbar }) => {
 
         {/* ----------------------------------------------------------------------------     */}
 
-        <div to={"/watch/6"} className="youtube-Videos">
-          <div className="thubmnailBox">
-            <img
-              className="youtube-thumbnailPic"
-              src="https://i.pinimg.com/originals/fe/b0/f0/feb0f0131f58d45b0f6f348c984fffca.png"
-              alt="thumbnail"
-            />
-            <div className="youtube-timingThumbnail">15:40</div>
-          </div>
-
-          <div className="youtube-TitleBox">
-            <div className="youtubeTitleBoxProfile">
-              <img
-                className="youtube-thumbnail-Profile"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbUFgfLaMxe8ECrFldr60oy5JNEguRZOdFLQ&s"
-                alt="Profile"
-              />
-            </div>
-            <div className="youtubeTitleBox-Title">
-              <div className="youtube-videoTitle">TMKOC</div>
-              <div className="youtube-channeName">Sony</div>
-              <div className="youtubeVideo-views">3 Likes</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

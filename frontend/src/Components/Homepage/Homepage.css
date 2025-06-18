@@ -27,7 +27,7 @@
     flex-shrink: 0;
     height: auto;
     overflow-x: scroll;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .homepage-options::-webkit-scrollbar {
@@ -38,10 +38,10 @@
 flex: 0 0 auto;
 height: 30px;
 padding: 1px 10px;
-background-color: rgb(42, 42, 42);
-color: white;
+background-color:blanchedalmond;
+color: black;
 font-weight: 600;
-border-radius: 5px;
+border-radius: 5px ;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -56,7 +56,7 @@ cursor: pointer;
     gap: 20px;
     grid-template-columns: 440px 440px 450px;
     padding: 90px 0 20px 0;
-    background-color: black;
+    /* background-color: black; */
     height: 100vh;
 }
 
@@ -66,11 +66,11 @@ cursor: pointer;
     gap: 30px;
     grid-template-columns: 386px 386px 386px 386px;
     padding: 90px 0 20px 0;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .youtube-Videos {
-    color: white;
+    color: black;
     text-decoration: none;
     display: flex;
     box-sizing: border-box;
@@ -98,7 +98,7 @@ cursor: pointer;
     right: 0;
     width: auto;
     padding: 1px 2px;
-    background-color: rgb(42, 42, 42);
+    /* background-color: rgb(42, 42, 42); */
     border-radius: 5px;
 }
 
