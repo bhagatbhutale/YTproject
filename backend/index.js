@@ -4,6 +4,9 @@ const PORT = 7001;
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
 
+const { seedVideos } = require("./DummyData/seed");
+
+
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -29,6 +32,8 @@ app.use("/commentApi", CommentRoutes)
 
 // db 
 connectDB()
+
+// seedVideos()
 
 app.listen(PORT, (req, res) => {
    console.log(`Server is Running on PORT ${PORT}...`)

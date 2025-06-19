@@ -2,13 +2,17 @@ import "./Homepage.css";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setCategory } from "../../Redux/categorySlice";
 const Homepage = ({ sideNavbar }) => {
 
   // Search a Video by title
-  const searchTerm = useSelector((state) => state.search.term);
+  const searchTerm = useSelector((state) => state.search.term)
+  // based on Category videos
+  const selectedCategory = useSelector((state) => state.category.selectedCategory)
+  const dispatch = useDispatch()
 
-
+  const options = ["All", "Coding", "Learning", "Music", "Movies", "etc"];
 
   // all Videos Fetching from Backend ----
   const [ data, setData ] = useState([])
@@ -26,32 +30,12 @@ const Homepage = ({ sideNavbar }) => {
 
 
   // Searching Function 
-  const filteredVideos = data.filter((item) =>
-    item?.title?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredVideos = data.filter((item) =>{ 
+    const videoSearchByTitle = item?.title?.toLowerCase().includes(searchTerm.toLowerCase());
+    const videoCategoryWIseSearch = selectedCategory === "All" || item.videoType === selectedCategory;
+    return videoSearchByTitle && videoCategoryWIseSearch
+})
 
-  const options = [
-    "All",
-    "Music",
-    "Mixes",
-    "Marathi Serial",
-    "New for You",
-    "TMKOC",
-    "All Movies",
-    "Marathi Movies",
-    "Tech Videos",
-    "Videos",
-    "Gamming",
-    "Cricket",
-    "Debates",
-    "T-series",
-    "Jalraj",
-    "Vlogs",
-    "Travels",
-    "News",
-    "Village Vlogs",
-    "World wide Videos",
-  ];
 
   return (
     <div className={sideNavbar ? `homepage` : "fullhomepage"}>
@@ -59,7 +43,10 @@ const Homepage = ({ sideNavbar }) => {
       <div className="homepage-options">
         {options.map((item, index) => {
           return (
-            <div key={index} className="homepage-option">
+            <div key={index}
+             className={`homepage-option ${selectedCategory === item ? "active" : ""}`}
+             onClick={() => dispatch(setCategory(item))}
+             >
               {item}
             </div>
           );
@@ -79,7 +66,6 @@ const Homepage = ({ sideNavbar }) => {
                   src={item.thumbnail}
                   alt="thumbnail"
                 />
-                <div className="youtube-timingThumbnail">15:40</div>
               </div>
 
               <div className="youtube-TitleBox">
@@ -102,6 +88,11 @@ const Homepage = ({ sideNavbar }) => {
           );
         })}
 
+
+
+
+
+{/* // Commented Code used in Future  */}
         {/* ----------------------------------------------------------------------------     */}
         {/* <Link to={"/watch/2"} className="youtube-Videos">
           <div className="thubmnailBox">

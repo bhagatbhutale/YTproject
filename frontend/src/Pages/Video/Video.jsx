@@ -79,7 +79,7 @@ const Video = () => {
       <div className="videoPostSection">
         <div className="video-youtube">
           {/* condictionally rendering video  */}
-          {data && (
+          {/* {data && (
             <video
               width="400"
               controls
@@ -89,6 +89,18 @@ const Video = () => {
               <source src={videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+          )} */}
+
+          {data && (
+            <iframe
+              className="video-youtube-video"
+              width="400"
+              height="515"
+              src={videoUrl}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
           )}
         </div>
 
@@ -140,7 +152,9 @@ const Video = () => {
             <div className="youtubeVideo-LikeBlock">
               <div className="youtubeVideo-likeBlock-Like">
                 <DownloadIcon />
-                <div className="youtube-video-likeBlock-NoOfLikes">Download</div>
+                <div className="youtube-video-likeBlock-NoOfLikes">
+                  Download
+                </div>
               </div>
             </div>
           </div>
@@ -158,7 +172,7 @@ const Video = () => {
             <div className="youtubeSelfComment">
               <img
                 className="video-youtubeSelfCommentProfile"
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Sony_LIV2017.jpg/200px-Sony_LIV2017.jpg"
+                src={data?.user?.profilePic}
                 alt=""
               />
               <div className="addComment">

@@ -48,6 +48,22 @@ align-items: center;
 cursor: pointer;
 }
 
+.homepage-option {
+    padding: 8px 14px;
+    margin: 4px;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .homepage-option.active {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+  }
+  
+
 /* // Main Youtube content videos  */
 
 .home-mainPage {
