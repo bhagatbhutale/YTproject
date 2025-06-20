@@ -156,6 +156,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
           </div>
         )}
 
+
         {isLoggedIn && (
           <img
             className="navbar-right-logo"
@@ -163,6 +164,7 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
             width={`30px`}
             height={"30px"}
             onClick={handleClickModel}
+            alt="Profile"
           />
         )}
 

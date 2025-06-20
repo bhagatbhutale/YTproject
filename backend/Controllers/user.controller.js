@@ -84,3 +84,29 @@ exports.logout = async (req, res) => {
         message: "Logged out Successfully"
     })
 }
+
+
+
+
+// / PUT /api/user/:userId - Update user profile by ID (requires auth) 
+exports.updateChannelNameAndAbout =  async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { channelName, about, profilePic } = req.body;
+
+    // Only allow user to update their own profile
+    if (req.user._id.toString() !== userId) {
+      return res.status(403).json({ error: "Unauthorized access" });
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { channelName, about, profilePic },
+      { new: true, runValidators: true }
+    );
+
+    res.json({ message: "Profile updated", updatedUser });
+  } catch (err) {
+    res.status(500).json({ error: "Server error", details: err.message });
+  }
+};

@@ -3,11 +3,19 @@ import { useEffect, useState } from "react";
 import SideNavbar from "../../Components/SideNavbar/SideNavbar";
 import Sidenavbar from "../../Components/SideNavbar/SideNavbar";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import UserProfile from "../EditProfilePage/UserProfile";
 import axios from "axios";
+// material ui button used 
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import { useNavigate } from "react-router-dom";
 
 import "./Profile.css";
 // Profile Page
 const Profile = ({ sideNavbar }) => {
+
+  const navigate = useNavigate()
+
   const { id } = useParams();
   // profile page fetching from backend
   const [data, setData] = useState([]);
@@ -30,6 +38,11 @@ const Profile = ({ sideNavbar }) => {
     fetchProfileData();
   }, []);
   // ---------------------------------------------------------------------
+
+
+  const handleEditProfile = async () => {
+    navigate(`/user/${id}/updateprofile`)
+  }
 
   return (
     <div className="profile">
@@ -60,9 +73,21 @@ const Profile = ({ sideNavbar }) => {
               {user?.userName} . {data.length} Videos
             </div>
             <div className="profileTop-Section-Info">{user?.about}</div>
+
+            <div className="profile-edit-btns">
+              <button className="subscribe-btn" variant="outlined">
+                Subscribe
+              </button>
+              <div className="custimize-channel-btn" >
+                <Stack spacing={2} direction="row">
+                  <Button variant="outlined" onClick={handleEditProfile} >Custmize Channel</Button>
+                </Stack>
+              </div>
+            </div>
           </div>
         </div>
 
+        {/* // video section  */}
         <div className="profileVideos">
           <div className="profile-video-Title">
             Videos &nbsp; <ArrowRightIcon />
