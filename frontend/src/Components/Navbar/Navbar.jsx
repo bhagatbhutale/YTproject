@@ -131,14 +131,14 @@ const Navbar = ({ setSideNavbarFunc, sideNavbar }) => {
 
       {/* // navbar-right  */}
       <div className="navbar-right">
-
         {/* upload video button  */}
         {isLoggedIn && (
-          <Link to={"/22/upload"} className="navbar-videoCall">
-            <VideoCallIcon
-              sx={{ color: "black", fontSize: "28px", cursor: "pointer" }}
-            />
-          </Link>
+            <Link to={"/22/upload"} className="navbar-videoCall">
+              <VideoCallIcon
+                sx={{ color: "black", fontSize: "28px", cursor: "pointer" }}
+              />
+            </Link>
+        
         )}
 
         <div className="navbar-notification">

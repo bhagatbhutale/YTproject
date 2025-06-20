@@ -36,6 +36,8 @@
     padding: 9px 10px;
     border-radius: 15px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
     &:hover {
         background-color:rgb(237, 217, 138);
     }
@@ -69,4 +71,55 @@
     height: 30px;
     border-radius: 20px;
 }
+
+
+
+/* media query  */
+/* Mobile Devices (767px) */
+@media screen and (max-width: 767px) {
+    .home-SideNavbar {
+      /* display: none; */
+      background-color: rgb(68, 57, 57);
+            z-index: 1001;
+    }
+  
+    .homeSidebarHide {
+      /* display: none !important; */
+    }
+    .home-sideNavbarTopOption {
+        color: white;
+
+    }
+  }
+  
+  /*Tablets (768px – 1024px) */
+  @media screen and (max-width: 1024px) {
+    .home-SideNavbar {
+      width: 220px;
+      padding: 10px;
+      background-color: rgb(68, 57, 57);
+      z-index: 1001;
+      height: 100%;
+    }
+  
+    .home-sideNavbarTopOption {
+      padding: 6px 8px;
+      gap: 12px;
+      color: white;
+    }
+  
+    .home-sideNavbarTopOptionTitle {
+      font-size: 13px;
+    }
+  
+    .home-sideNavbarTopOptionTitleHeader {
+      font-size: 14px;
+    }
+  
+    .home-sidebar-imgLogo {
+      width: 26px;
+      height: 26px;
+    }
+  }
+  
 

@@ -74,6 +74,34 @@ const Video = () => {
     })
   }
 
+
+  const currentUser = localStorage.getItem("userId");
+
+// Delete Comment Api
+  const handleDelete = async (commentId) => {
+    alert("Conform to Delete Comment")
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await axios.delete(
+        `http://localhost:7001/commentApi/comment/${commentId}`, { withCredentials: true },{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setComments((prev) => prev.filter((c) => c._id !== commentId));
+    } catch (err) {
+      console.error("Delete failed:", err.response?.data || err.message);
+    }
+  };
+  
+  
+  
+
+ 
+  
+
   return (
     <div className="video">
       <div className="videoPostSection">
@@ -199,7 +227,7 @@ const Video = () => {
 
               {comments.map((item, index) => {
                 return (
-                  <div className="youtubeSelfComment">
+                  <div key={item._id} className="youtubeSelfComment">
                     <img
                       className="video-youtubeSelfCommentProfile"
                       src={item?.user?.profilePic}
@@ -218,6 +246,15 @@ const Video = () => {
                       <div className="otherCommentSectionComment">
                         {item?.message}
                       </div>
+                    </div>
+                    <div className="comment-Options">
+                    
+                      {String(item.user._id) === currentUser && (
+                        <button onClick={() => handleDelete(item._id)}>
+                          Delete
+                        </button>
+                      )}
+                      <button>Edit </button>
                     </div>
                   </div>
                 );

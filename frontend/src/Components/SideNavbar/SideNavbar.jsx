@@ -10,14 +10,15 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
+import { Link } from "react-router-dom"
 const SideNavbar = ({sideNavbar}) => {
   return (
     <div className={sideNavbar ? "home-SideNavbar" : "homeSidebarHide"}>
       <div className="home-sideNavbar-Top">
-        <div className={`home-sideNavbarTopOption`}>
-          <HomeIcon />
+        <Link to={"/"} className={`home-sideNavbarTopOption`}>
+          <HomeIcon sx={{color: ""}} />
           <div className="home-sideNavbarTopOptionTitle">Home</div>
-        </div>
+        </Link>
         <div className={`home-sideNavbarTopOption`}>
           <VideocamIcon />
           <div className="home-sideNavbarTopOptionTitle">Shorts</div>

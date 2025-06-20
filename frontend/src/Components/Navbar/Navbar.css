@@ -1,5 +1,4 @@
 /* Navbar left part  */
-
 .navbar {
     height: 56px;
     width: 100%;
@@ -10,7 +9,6 @@
     justify-content: space-between;
     top: 0;
     position: fixed;
-    /* background-color: black; */
     z-index: 10;
 }
 
@@ -29,7 +27,6 @@
     width: 40px;
     height: 40px;
     border-radius: 20px;
-    /* margin-right: 16px; */
     cursor: pointer;
 }
 
@@ -37,9 +34,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    /* color: black; */
-    text-decoration: none;
+    cursor: pointer;    text-decoration: none;
 }
 
 .navbar_youtubeTitle {
@@ -112,15 +107,11 @@
     border: 2px solid rgb(176, 176, 208);
     border-radius: 500px;
     cursor: pointer;
-    /* font-weight: 600; */
     gap: 5px;
     &:hover {
         background-color: rgb(247, 245, 245);
     }
-}
-.sign-In-Icon {
-    /* color: coral; */
-}
+} 
 
 .navbar-right {
     display: flex;
@@ -156,5 +147,63 @@
         background-color: white;
     }
 }
+
+
+/* // ---------------------------------------
+
+-------------------------------------------*/
+
+
+
+/* Media Query  */
+/* Tablet: max width 1024px */
+@media screen and (max-width: 1024px) {
+    .navbar-middle {
+      width: 60%;
+    }
+  
+    .navbar-searchIconBox {
+      width: 50px;
+    }
+  
+    .nav-search-input {
+      font-size: 14px;
+    }
+  }
+  
+  
+
+  /* Mobile View  */
+  @media screen and (max-width: 767px) {
+.navbar-searchIconBox {
+display: none;
+}
+
+.navbar-Mike {
+    display: none;
+}
+
+.navbar-notification {
+    display: none;
+}
+
+/* .navbarHamberger {
+    display: none;
+} */
+
+.nav-search-input {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 10px;
+
+    border: 1px solid rgb(58, 57, 57);
+    font-size: 16px;
+    &:focus {
+        outline: none;
+    }
+
+}
+  }
+  
 
 

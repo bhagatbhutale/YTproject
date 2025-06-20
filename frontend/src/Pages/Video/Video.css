@@ -265,3 +265,145 @@ margin-bottom: 15px;
     color: black;
     font-size: 12px;
 }
+
+.comment-Options {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    gap: 13px;
+    position: relative;
+    top: 10px;
+    margin-left: 33rem;
+}
+
+button {
+    padding:7px 13px;
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 15px;
+    &:hover {
+        background-color: white;
+        color: black;
+        border: 1px solid red;
+    }
+
+}
+
+
+
+/* // ----------------------- */
+
+
+/* Tablet View: width between 768px and 1024px */
+@media screen and (max-width: 1024px) {
+    .video {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+  
+    .videoPostSection {
+      max-width: 100%;
+      padding: 0 20px;
+    }
+  
+    .videoSuggession {
+      max-width: 100%;
+      padding: 10px 20px;
+    }
+  
+    .videoSuggesstionBlock {
+      flex-direction: row;
+    }
+  
+    .videoSuggesstion-Thumbnail {
+      width: 160px;
+      height: 90px;
+    }
+  
+    .comment-Options {
+      margin-left: 0;
+      justify-content: flex-end;
+    }
+  }
+  
+  
+  /* Mobile View: width less than or equal to 767px */
+  @media screen and (max-width: 767px) {
+    .video {
+      padding: 15px 10px;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .videoPostSection {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  
+    .video-youtube-video {
+      width: 100%;
+     height: 50vh; 
+    }
+  
+    .youtube-video-ProfileBlock {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .youtubeVideo-LikeBlock {
+      padding: 6px 10px;
+      gap: 8px;
+    }
+  
+    .youtube-video-About {
+      padding: 8px;
+      font-size: 13px;
+    }
+  
+    .youtubeComment-Section-Title {
+      font-size: 18px;
+    }
+  
+    .videoSuggession {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  
+    .videoSuggesstionBlock {
+      flex-direction: column;
+      gap: 8px;
+    }
+  
+    .videoSuggesstion-Thumbnail {
+      width: 100%;
+      height: auto;
+    }
+  
+    .videoSuggession-About-titlee {
+      font-size: 14px;
+    }
+  
+    .videoSuggessionAboutProfile {
+      font-size: 11px;
+    }
+  
+    .comment-Options {
+      margin-left: 0;
+      justify-content: flex-end;
+      top: 0;
+      font-size: 12px;
+    }
+  
+    .addCommentInput {
+      font-size: 14px;
+    }
+  
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  }
+

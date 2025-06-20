@@ -17,7 +17,7 @@ const Profile = ({ sideNavbar }) => {
     await axios
       .get(`http://localhost:7001/api/${id}/channel`)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setData(response.data.video);
         setUser(response.data.video[0]?.user);
       })

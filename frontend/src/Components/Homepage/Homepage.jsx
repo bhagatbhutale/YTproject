@@ -43,10 +43,13 @@ const Homepage = ({ sideNavbar }) => {
       <div className="homepage-options">
         {options.map((item, index) => {
           return (
-            <div key={index}
-             className={`homepage-option ${selectedCategory === item ? "active" : ""}`}
-             onClick={() => dispatch(setCategory(item))}
-             >
+            <div
+              key={index}
+              className={`homepage-option ${
+                selectedCategory === item ? "active" : ""
+              }`}
+              onClick={() => dispatch(setCategory(item))}
+            >
               {item}
             </div>
           );
@@ -57,6 +60,8 @@ const Homepage = ({ sideNavbar }) => {
       <div
         className={sideNavbar ? `home-mainPage` : "home-mainPagewithoutSidebar"}
       >
+        {filteredVideos.length == "0" ? <h1>No Videos Found</h1> : ""}
+
         {filteredVideos.map((item, index) => {
           return (
             <Link to={`/watch/${item._id}`} className="youtube-Videos">
@@ -88,11 +93,7 @@ const Homepage = ({ sideNavbar }) => {
           );
         })}
 
-
-
-
-
-{/* // Commented Code used in Future  */}
+        {/* // Commented Code used in Future  */}
         {/* ----------------------------------------------------------------------------     */}
         {/* <Link to={"/watch/2"} className="youtube-Videos">
           <div className="thubmnailBox">
@@ -199,7 +200,6 @@ const Homepage = ({ sideNavbar }) => {
         </Link> */}
 
         {/* ----------------------------------------------------------------------------     */}
-
       </div>
     </div>
   );

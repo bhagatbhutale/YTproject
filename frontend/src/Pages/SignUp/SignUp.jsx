@@ -39,8 +39,6 @@ const SignUp = () => {
 
   // image upload using Cloudinary
   const uploadImage = async (e) => {
-    console.log("Uploading");
-
     const file = e.target.files[0];
 
     const data = new FormData();
@@ -65,8 +63,6 @@ const SignUp = () => {
     }
   };
 
-  console.log(signUpField);
-
   // Backend SignUp user Post in DataBase
   const handleSignUp = async (req, res) => {
     setProgressBar(true)
@@ -78,7 +74,6 @@ const SignUp = () => {
         nevigate("/")
       })
       .catch((err) => {
-        console.log(err);
         setProgressBar(false);
         toast.error(err);
 

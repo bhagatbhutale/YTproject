@@ -66,3 +66,62 @@ font-weight: 600;
         color: white;
     }
 }
+
+
+
+
+
+
+/* // Media Query  */
+
+/* Tablet devices (≤1024px) */
+@media screen and (max-width: 1024px) {
+    .uploadBox {
+      width: 70%;
+      padding: 20px;
+    }
+  
+    .uploadFormInput {
+      width: 85%;
+    }
+  
+    .uploadVideoTitle {
+      font-size: 24px;
+    }
+  
+    .uploadBtn-form {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+  }
+  
+  /* Mobile devices (≤768px) */
+  @media screen and (max-width: 768px) {
+    .uploadBox {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    .uploadVideoTitle {
+      font-size: 20px;
+      text-align: center;
+    }
+  
+    .uploadFormInput {
+      width: 100%;
+      font-size: 14px;
+      height: 40px;
+    }
+  
+    .uploadBtns {
+      gap: 15px;
+    }
+
+    .uploadBtn-form {
+background-color: coral;
+color: white;
+    }
+  
+   
+  }
+  
