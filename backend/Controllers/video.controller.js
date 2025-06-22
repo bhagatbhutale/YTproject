@@ -86,3 +86,23 @@ exports.getAllVideoByUserID = async (req, res) => {
       });
     }
 }
+
+
+//Delete A Specific Video Using VideoId
+exports.deleteVideo = async (req, res) => {
+  try {
+    const video = await Video.findById(req.params.videoId);
+
+    if (!video) return res.status(404).json({ message: "Video not found" });
+
+    // Only the author can delete the video
+    if (video.user.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: "Unauthorized access" });
+    }
+
+    await video.deleteOne();
+    res.status(200).json({ message: "Video deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};

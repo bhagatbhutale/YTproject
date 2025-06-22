@@ -13,6 +13,8 @@ router.get("/allVideo", videoController.getAllVideo);
 router.get("/getVideoById/:id", videoController.getVideoById)
 // profile Page Route
 router.get("/:userId/channel", videoController.getAllVideoByUserID)
+// Delete A Specific Video 
+router.delete("/video/:videoId", auth,  videoController.deleteVideo )
 
 
 module.exports = router;

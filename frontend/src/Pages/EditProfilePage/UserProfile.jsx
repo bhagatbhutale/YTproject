@@ -45,7 +45,7 @@ const UserProfile = () => {
   return (
     <div className="edit-profile-container">
       <div className="edit-profile-card">
-        <h2>Edit Profile</h2>
+        <h2>Update Profile</h2>
         <input
           type="text"
           placeholder="Channel Name"

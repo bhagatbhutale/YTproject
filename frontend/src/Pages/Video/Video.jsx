@@ -250,11 +250,10 @@ const Video = () => {
                     <div className="comment-Options">
                     
                       {String(item.user._id) === currentUser && (
-                        <button onClick={() => handleDelete(item._id)}>
+                        <button className="comment-delete-Btn" onClick={() => handleDelete(item._id)}>
                           Delete
                         </button>
                       )}
-                      <button>Edit </button>
                     </div>
                   </div>
                 );

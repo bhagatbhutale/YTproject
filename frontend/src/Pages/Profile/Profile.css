@@ -85,14 +85,14 @@
     align-items: center;
     gap: 20px;
 }
-
+/* 
 .subscribe-btn{
     background-color: black;
     color: white;
     margin-top: 7px;
     padding: 12px;
     border-radius: 20px;
-}
+} */
 
 .custimize-channel-btn {
     margin-right: 10rem;
@@ -168,6 +168,14 @@ font-weight: 600;
 .profileVideo-Block-details-about {
     color: #4b4343;
     font-size: 14px;
+}
+
+.videoDelete-btn {
+padding: 5px;
+border-radius: 10px;
+&:hover {
+    color: red;
+}
 }
 
 

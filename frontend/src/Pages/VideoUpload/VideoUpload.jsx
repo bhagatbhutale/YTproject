@@ -132,6 +132,7 @@ const VideoUpload = () => {
               type="file"
               accept="image/*"
               onChange={(e) => uploadImage(e, "image")}
+              className="file-input"
             />
           </div>
           <div>
