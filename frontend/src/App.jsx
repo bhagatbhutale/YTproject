@@ -9,6 +9,7 @@ import VideoUpload from "./Pages/VideoUpload/VideoUpload";
 import SignUp from "./Pages/SignUp/SignUp";
 import axios from "axios"
 import UserProfile from "./Pages/EditProfilePage/UserProfile";
+import EditVideo from "./Pages/EditVideo/EditVideo";
 
 const App = () => {
   const [ sideNavbar , setSideNavbar ] = useState(true);
@@ -36,7 +37,11 @@ const App = () => {
         <Route path="/user/:id" element={<Profile sideNavbar={sideNavbar} />} />
         <Route path="/:id/upload" element={<VideoUpload />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="user/:userId/updateprofile" element={ <UserProfile />  }  />
+        <Route path="/user/:userId/updateprofile" element={<UserProfile />} />
+        <Route
+          path="/video/edit_video/:editVideoId"
+          element={<EditVideo />}
+        />
       </Routes>
     </div>
   );

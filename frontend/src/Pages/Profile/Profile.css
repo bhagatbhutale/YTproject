@@ -65,9 +65,8 @@
 }
 
 .profile-top-section-img {
-    width: 100%;
+    width: 90%;
     border-radius: 50%;
-    height: 100%;
 }
 
 .profileTop-Section-About {
@@ -85,14 +84,16 @@
     align-items: center;
     gap: 20px;
 }
-/* 
+
 .subscribe-btn{
     background-color: black;
     color: white;
     margin-top: 7px;
-    padding: 12px;
-    border-radius: 20px;
-} */
+    padding: 10px;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+} 
 
 .custimize-channel-btn {
     margin-right: 10rem;
@@ -128,8 +129,7 @@
 
 .profileee-Videos {
     display: flex;
-    gap: 10px;
-    height: 100vh;
+    gap: 20px;
     flex-wrap: wrap;
     margin-top: 20px;
 }
@@ -178,4 +178,10 @@ border-radius: 10px;
 }
 }
 
+.EditDelete-btn {
+    color: rgb(240, 107, 107);
+    &:hover {
+        color: black;
+    }
+}
 

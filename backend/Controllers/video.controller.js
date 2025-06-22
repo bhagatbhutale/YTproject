@@ -1,4 +1,4 @@
-const Video = require("../Models/video");
+const Video = require("../Models/video")
 
 
 // videp Upload
@@ -104,5 +104,33 @@ exports.deleteVideo = async (req, res) => {
     res.status(200).json({ message: "Video deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+
+// Edit a Specific Video using VideoId 
+exports.updateVideo = async (req, res) => {
+  try {
+    const { editVideoId } = req.params;
+    const { title, description, videoLink, thumbnail, videoType } = req.body;
+
+    const video = await Video.findById(editVideoId);
+    if (!video) return res.status(404).json({ error: "Video not found" });
+
+    // Check if the current user is the video owner
+    if (video.user.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ error: "Unauthorized" });
+    }
+
+    video.title = title;
+    video.description = description;
+    video.videoLink = videoLink;
+    video.thumbnail = thumbnail;
+    video.videoType = videoType;
+
+    const updatedVideo = await video.save();
+    res.status(200).json({ message: "Video updated", video: updatedVideo });
+  } catch (error) {
+    res.status(500).json({ error: "Server error", details: error.message });
   }
 };

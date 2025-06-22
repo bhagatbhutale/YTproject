@@ -35,6 +35,25 @@ const videos = [
     thumbnail:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvA00GaUwlwEKhXxDgarATH7yRlRh3utSexQ&s",
   },
+  {
+    user: userId,
+    title: "Phoolon ke Rang Se Lyrics",
+    description: "This Song is a 90s, Listen This Song and Enjoy it",
+    videoLink: "https://www.youtube.com/embed/mZRJfQluJTM?si=ieaq1ugSWdBFjH2B",
+    thumbnail:
+      "https://i.ytimg.com/vi/OSKCmiXLngk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAO8rJS1H6ob4T9fKZg7ubZ5-6M3w",
+    videoType: "Music",
+  },
+
+  {
+    user: userId,
+    title: "Kabhi Yaadon Mein",
+    description:
+      "After the huge success of Raat Kali Mashup by Digvijay Singh Pariyar, He is back again with another soulful cover of Song Kabhi Yaadon Mein Aao Kabhi Khwabon Mein Aao originally sung by Arijit Singh",
+    videoLink: "https://www.youtube.com/embed/TldxlNmLpiM?si=_jVneSdZxVFzxJKd",
+    thumbnail: "https://i.ytimg.com/vi/mYD7VObAK4c/maxresdefault.jpg",
+    videoType: "Music",
+  },
 ];
 
 exports.seedVideos = async () => {

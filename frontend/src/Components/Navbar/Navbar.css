@@ -187,6 +187,14 @@ display: none;
     display: none;
 }
 
+.navbar-model  {
+    height: 418%;
+}
+
+.navbar_youtubeTitle {
+    display: none;
+}
+
 /* .navbarHamberger {
     display: none;
 } */
@@ -194,16 +202,22 @@ display: none;
 .nav-search-input {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    margin-left: 10px;
-
+    margin-left: 5px;
+    padding-left: 10px;
     border: 1px solid rgb(58, 57, 57);
     font-size: 16px;
     &:focus {
         outline: none;
     }
+    &::placeholder {
+        color: black;
+    }
+}
+
+
+
 
 }
-  }
   
 
 

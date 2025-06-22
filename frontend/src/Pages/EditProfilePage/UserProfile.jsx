@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import "./UserProfile.css"
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,11 @@ const UserProfile = () => {
 
   const handleUpdate = async () => {
     try {
+
+        if(channelName === "") {
+            alert("ChannelName is Required !")
+        }
+
       const token = localStorage.getItem("token");
 
       if(token) {
@@ -42,11 +47,16 @@ const UserProfile = () => {
     }
   };
 
+  const handleExit = () => {
+    navigate(-1)
+  }
+
   return (
     <div className="edit-profile-container">
       <div className="edit-profile-card">
         <h2>Update Profile</h2>
         <input
+          required
           type="text"
           placeholder="Channel Name"
           value={channelName}
@@ -58,6 +68,9 @@ const UserProfile = () => {
           onChange={(e) => setAbout(e.target.value)}
         ></textarea>
         <button onClick={handleUpdate}>Update</button>
+        
+          <button onClick={handleExit} > Go to Profile </button>
+    
       </div>
     </div>
   );

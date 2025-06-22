@@ -11,12 +11,14 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 import { Link } from "react-router-dom"
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import LiveTvIcon from "@mui/icons-material/LiveTv";
 const SideNavbar = ({sideNavbar}) => {
   return (
     <div className={sideNavbar ? "home-SideNavbar" : "homeSidebarHide"}>
       <div className="home-sideNavbar-Top">
         <Link to={"/"} className={`home-sideNavbarTopOption`}>
-          <HomeIcon sx={{color: ""}} />
+          <HomeIcon sx={{ color: "" }} />
           <div className="home-sideNavbarTopOptionTitle">Home</div>
         </Link>
         <div className={`home-sideNavbarTopOption`}>
@@ -66,6 +68,14 @@ const SideNavbar = ({sideNavbar}) => {
         <div className={`home-sideNavbarTopOption`}>
           <ContentCutIcon />
           <div className="home-sideNavbarTopOptionTitle">Your Clips</div>
+        </div>
+        <div className={`home-sideNavbarTopOption`}>
+          <LiveTvIcon />
+          <div className="home-sideNavbarTopOptionTitle">Lives Streams</div>
+        </div>
+        <div className={`home-sideNavbarTopOption`}>
+          <SportsEsportsIcon />
+          <div className="home-sideNavbarTopOptionTitle">Gamming</div>
         </div>
       </div>
 

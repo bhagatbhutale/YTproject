@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 import "./Profile.css";
 // Profile Page
@@ -73,6 +74,12 @@ const Profile = ({ sideNavbar }) => {
     }
   };
   
+  // Edit Video Backend API 
+  
+  const handleVideoEdit = (editVideoId) => {
+    alert(`You want to edit the video with ID: ${editVideoId}`);
+    navigate(`/video/edit_video/${editVideoId}`); //
+  };
 
 
   return (
@@ -151,8 +158,15 @@ const Profile = ({ sideNavbar }) => {
                     onClick={() => handleDelete(item._id)}
                     className="videoDelete-btn"
                   >
-                    <DeleteIcon sx={{ fontSize:"20px" }} />
+                    <DeleteIcon sx={{ fontSize: "20px" }} />
                     Delete
+                  </button>
+                  <button
+                    onClick={() => handleVideoEdit(item._id)}
+                    className="EditDelete-btn"
+                  >
+                    <EditIcon sx={{ fontSize: "20px" }} />
+                    Edit Video
                   </button>
                 </div>
               );
