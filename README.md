@@ -47,19 +47,23 @@ Tools	       Axios, React Router DOM
 
 1. Home Page UI/UX 
 Header with logo, search bar, and user profile
+
 Sidebar with navigation options
+
 Video grid showing thumbnails, titles, and metadata
+
 Filter buttons (category wise)
+
 Fully responsive on mobile, tablet, desktop
 
 
-2. User Authentication
+3. User Authentication
 Sign up with channel name, profile picture, about
 Login using JWT tokens
 Route protection for pages like upload/edit videos
 
 
-3. Video Player Page :-
+4. Video Player Page :-
 Video player with support for:
 Self-hosted .mp4 or YouTube iframe
 Comment section
@@ -67,7 +71,7 @@ Like / Dislike with toggle logic
 Share / Subscribe buttons (UI)
 
 
-4. Channel Page :-
+5. Channel Page :-
 User dashboard with uploaded videos
 Edit/Delete their own videos
 Editable profile (name, about, banner, etc.)
