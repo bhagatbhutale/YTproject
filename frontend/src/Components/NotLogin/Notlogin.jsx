@@ -1,4 +1,3 @@
-import React from 'react'
 import "./Notlogin.css"
 const Notlogin = () => {
   return (

@@ -27,7 +27,7 @@ const Video = () => {
     await axios
       .get(`http://localhost:7001/api/getVideoById/${id}`)
       .then((response) => {
-        console.log(response.data.video);
+        // console.log(response.data.video);
         setData(response.data.video)
         setVideoUrl(response?.data?.video?.videoLink)
       })
@@ -35,6 +35,63 @@ const Video = () => {
         console.log(err);
       });
   };
+
+  const convertToYouTubeEmbed = (url) => {
+    try {
+      const videoId = url.includes("watch?v=")
+        ? new URL(url).searchParams.get("v")
+        : url.split("/").pop();
+      return `https://www.youtube.com/embed/${videoId}`;
+    } catch (err) {
+      return url;
+    }
+  };
+  
+
+// Like or Dislike Backend 
+const [likes, setLikes] = useState(data?.like?.length || 0);
+const [dislikes, setDislikes] = useState(data?.dislike?.length || 0);
+
+const handleLike = async (videoIdLiked) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const res = await axios.post(
+      `http://localhost:7001/api/video/${videoIdLiked}/like`,
+      {},
+      {
+        withCredentials:true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    // Assuming your state uses likes and dislikes
+    setLikes(res.data.likes); // plural
+    setDislikes(res.data.dislikes);
+  } catch (error) {
+    alert("Failed to like");
+    console.error(error);
+  }
+};
+
+
+// Dislike
+const handleDislike = async (videoIdDisLiked) => {
+  try {
+    const res = await axios.post(
+      `http://localhost:7001/api/video/${videoIdDisLiked}/dislike`,
+      {},
+    );
+    setLikes(res.data.like);
+    setDislikes(res.data.dislike);
+  } catch (error) {
+    alert("Failed to dislike");
+    console.error(error);
+  }
+};
+
+
 
   // comment fetching from Backend function 
   const getCommentByVideoId = async (req, ress) => {
@@ -97,10 +154,6 @@ const Video = () => {
   };
   
   
-  
-
- 
-  
 
   return (
     <div className="video">
@@ -119,7 +172,7 @@ const Video = () => {
             </video>
           )} */}
 
-          {data && (
+          {/* {data && (
             <iframe
               className="video-youtube-video"
               width="400"
@@ -129,6 +182,36 @@ const Video = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
+          )} */}
+
+          {data && (
+            <div className="video-player">
+              {videoUrl.includes("youtube.com") ||
+              videoUrl.includes("youtu.be") ? (
+                // YouTube embed (iframe)
+                <iframe
+                  className="video-youtube-video"
+                  width="100%"
+                  height="515"
+                  src={convertToYouTubeEmbed(videoUrl)}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                // Self-hosted video (.mp4)
+                <video
+                  className="video-youtube-video"
+                  width="100%"
+                  height="515"
+                  controls
+                  autoPlay
+                >
+                  <source src={videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </div>
           )}
         </div>
 
@@ -157,19 +240,26 @@ const Video = () => {
               <div className="subscribeBtnYoutube">Subscribe</div>
             </div>
 
+            {/* // Like or DisLike Blocks   */}
             <div className="youtubeVideo-LikeBlock">
-              <div className="youtubeVideo-likeBlock-Like">
+              <div
+                className="youtubeVideo-likeBlock-Like"
+                onClick={() => handleLike(id)}
+              >
                 <ThumbUpOffAltIcon />
-                <div className="youtube-video-likeBlock-NoOfLikes">
-                  {data?.like}
-                </div>
+                <span>{likes}</span>
               </div>
               <div className="youtubeVideo-Divider"></div>
-              <div className="youtubeVideo-likeBlock-Like">
+              <div
+                className="youtubeVideo-likeBlock-Like"
+                onClick={() => handleDislike(id)}
+              >
                 <ThumbDownOffAltIcon />
+                <span>{dislikes}</span>
               </div>
             </div>
 
+            {/* // Share icon  */}
             <div className="youtubeVideo-LikeBlock">
               <div className="youtubeVideo-likeBlock-Like">
                 <ShareIcon />
@@ -248,9 +338,11 @@ const Video = () => {
                       </div>
                     </div>
                     <div className="comment-Options">
-                    
                       {String(item.user._id) === currentUser && (
-                        <button className="comment-delete-Btn" onClick={() => handleDelete(item._id)}>
+                        <button
+                          className="comment-delete-Btn"
+                          onClick={() => handleDelete(item._id)}
+                        >
                           Delete
                         </button>
                       )}

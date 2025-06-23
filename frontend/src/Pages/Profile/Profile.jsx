@@ -74,10 +74,9 @@ const Profile = ({ sideNavbar }) => {
     }
   };
   
-  // Edit Video Backend API 
-  
+  // Edit Video Page Render Using videoId Backend API 
   const handleVideoEdit = (editVideoId) => {
-    alert(`You want to edit the video with ID: ${editVideoId}`);
+    // alert(`You want to edit the video with ID: ${editVideoId}`);
     navigate(`/video/edit_video/${editVideoId}`); //
   };
 

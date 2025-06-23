@@ -72,7 +72,7 @@
 }
 
 /* subscribe button */
-/* .subscribeBtnYoutube {
+.subscribeBtnYoutube {
     background-color: black;
     color: white;
     padding: 0px 16px;
@@ -84,7 +84,7 @@
     font-weight: 600;
     cursor: pointer;
     font-size: 14px;
-} */
+}
 
 .youtubeVideo-LikeBlock {
     display: flex;

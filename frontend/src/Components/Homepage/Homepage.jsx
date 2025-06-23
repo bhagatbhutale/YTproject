@@ -86,7 +86,7 @@ const Homepage = ({ sideNavbar }) => {
                   <div className="youtube-channeName">
                     {item?.user?.channelName}
                   </div>
-                  <div className="youtubeVideo-views"> {item?.like}</div>
+                  <div className="youtubeVideo-views"> {item?.like.length}</div>
                 </div>
               </div>
             </Link>
