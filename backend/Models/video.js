@@ -27,17 +27,20 @@ const videoSchema = new mongoose.Schema(
     },
     videoType: {
       type: String,
-    //   enum: ["short", "full"],
-      default : "All"
+      //   enum: ["short", "full"],
+      default: "All",
     },
-    like: {
-        type : Number,
-        default:0,
-    },
-    disLike: {
-        type : Number,
-        default : 0,
-    }
+    like: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"User",
+      default: 0,
+    }],
+    disLike: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: 0,
+    }],
+
   },
   {
     timestamps: true, // adds createdAt and updatedAt
