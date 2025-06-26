@@ -1,3 +1,5 @@
+👉 IMP Reads :- Firstfall signup karlo, then login karo, or { userId } change kro seed.js me tabhi Videos Inserts Honge then videos dekhna shuru karo...
+
 🎥 YouTube Clone - Full Stack Web Application
 
 A full-featured YouTube Clone Web Application built using React (Frontend), Node.js & Express (Backend), and MongoDB (Database). The app allows users to register, upload and watch videos, manage their channels, interact with other users, and more — designed to closely replicate the experience of the real YouTube platform.

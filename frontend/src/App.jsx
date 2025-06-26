@@ -10,6 +10,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import axios from "axios"
 import UserProfile from "./Pages/EditProfilePage/UserProfile";
 import EditVideo from "./Pages/EditVideo/EditVideo";
+import NotFound from "./Pages/Notfound/NotFound";
 
 const App = () => {
   const [ sideNavbar , setSideNavbar ] = useState(true);
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/:id/upload" element={<VideoUpload />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user/:userId/updateprofile" element={<UserProfile />} />
+        <Route path="*" element={ <NotFound /> } />
         <Route
           path="/video/edit_video/:editVideoId"
           element={<EditVideo />}

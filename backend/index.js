@@ -29,9 +29,12 @@ app.use("/api", VideoRoutes)
 app.use("/commentApi", CommentRoutes)
 
 
+// Please Firstfall dummy data seeding  >> userId change in seed.js file 
 
 // db 
 connectDB()
+
+console.log("Firstfall signup karlo, then login karo, or { userId } change kro seed.js me tabhi Videos Inserts Honge then videos dekhna shuru karo...")
 
 // seedVideos()
 

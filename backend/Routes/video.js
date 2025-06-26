@@ -19,6 +19,6 @@ router.delete("/video/:videoId", auth,  videoController.deleteVideo )
 router.put("/editVideo/:editVideoId", auth, videoController.updateVideo); 
 // Video Like or DisLike
 router.post("/video/:id/like", auth,  videoController.toggleLike);
-router.post("/video/:id/dislike",  videoController.toggleDislike);
+router.post("/video/:id/dislike", auth,  videoController.toggleDislike);
 
 module.exports = router;

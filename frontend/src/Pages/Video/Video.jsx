@@ -76,20 +76,29 @@ const handleLike = async (videoIdLiked) => {
 };
 
 
-// Dislike
 const handleDislike = async (videoIdDisLiked) => {
   try {
+    const token = localStorage.getItem("token"); // Ensure token is stored after login
+
     const res = await axios.post(
       `http://localhost:7001/api/video/${videoIdDisLiked}/dislike`,
       {},
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,  
+        },
+      }
     );
-    setLikes(res.data.like);
-    setDislikes(res.data.dislike);
+
+    setLikes(res.data.likes);
+    setDislikes(res.data.dislikes);
   } catch (error) {
     alert("Failed to dislike");
     console.error(error);
   }
 };
+
 
 
 

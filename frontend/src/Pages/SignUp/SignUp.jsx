@@ -65,6 +65,11 @@ const SignUp = () => {
 
   // Backend SignUp user Post in DataBase
   const handleSignUp = async (req, res) => {
+
+    if(signUpField.userName === "" || signUpField.password === "") {
+      alert("Please fill  the Required Fields");
+      return;
+    }
     setProgressBar(true)
     axios
       .post("http://localhost:7001/auth/signup", signUpField)
