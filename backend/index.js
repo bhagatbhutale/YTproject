@@ -1,15 +1,15 @@
 const express = require("express");
 const app = express();
-const PORT = 7001;
+require("dotenv").config();
+const PORT = process.env.PORT;
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
-
-const { seedVideos } = require("./DummyData/seed");
+const frotendUrl = process.env.FRONTEND_URL;
 
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: frotendUrl,
     credentials: true,
   })
 );

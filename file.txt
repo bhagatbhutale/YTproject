@@ -1,8 +1,5 @@
-Project Started 08-06-25
 
-1. Navbar Started navbar is DOne 
-
-
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/E6tAtRi82QY?si=RJKKIG_EhWnFQ89x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Steps :- Note
+userId change  <-- video inserted userId is Required for verified user
+First SignUp --> then Login --> then userId copy in your database in paste in DummyData/seed.js  change userId 
+if a userId change then Videos will be inserted Successfully 

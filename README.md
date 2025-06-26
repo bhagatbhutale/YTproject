@@ -2,6 +2,8 @@
 
 🎥 YouTube Clone - Full Stack Web Application
 
+VideoLink on Drive : 
+
 A full-featured YouTube Clone Web Application built using React (Frontend), Node.js & Express (Backend), and MongoDB (Database). The app allows users to register, upload and watch videos, manage their channels, interact with other users, and more — designed to closely replicate the experience of the real YouTube platform.
 
 📚 Table of Contents
@@ -129,7 +131,7 @@ Flex/Grid
 bash
 Copy
 Edit
-git clone https://github.com/your-username/youtube-clone.git
+git clone https://github.com/bhagatbhutale/YTproject
 cd youtube-clone
 
 2. Run Frontend
