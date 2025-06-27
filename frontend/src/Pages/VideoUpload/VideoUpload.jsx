@@ -10,8 +10,7 @@ import "react-toastify/dist/ReactToastify.css"
 // circular Progress Before loading uploaded the videos and img
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-require("dotenv").config();
-const cloudinaryKey = process.env.CLOUDINARY_API_KEY;
+
 
 const VideoUpload = () => {
   // videoupload form handle
@@ -47,7 +46,7 @@ const VideoUpload = () => {
     try {
       const response = await axios.post(
         // cloudinary = dfmpevmcj
-        `https://api.cloudinary.com/v1_1/${cloudinaryKey}/${type}/upload`,
+        `https://api.cloudinary.com/v1_1/dfmpevmcj/${type}/upload`,
         data
       );
       const url = response.data.secure_url;

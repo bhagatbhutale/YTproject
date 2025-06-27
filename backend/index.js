@@ -35,7 +35,6 @@ app.use("/commentApi", CommentRoutes)
 connectDB()
 
 console.log("Firstfall signup karlo, then login karo, or { userId } change kro seed.js me tabhi Videos Inserts Honge then videos dekhna shuru karo...")
-
 // seedVideos()
 
 app.listen(PORT, (req, res) => {

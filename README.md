@@ -1,4 +1,7 @@
-👉 IMP Reads :- Firstfall signup karlo, then login karo, or { userId } change kro seed.js me tabhi Videos Inserts Honge then videos dekhna shuru karo...
+👉 IMP Reads :- Firstfall signup karlo, then login karo, or { userId } change kro seed.js me tabhi Dummy Videos Inserts Honge then videos dekhna shuru karo...
+
+AudioLink : https://drive.google.com/file/d/10ohhYNawZSdIboMP6UHUrl3Ab4TILrUr/view?usp=drive_link
+VideoLink on Drive : https://drive.google.com/file/d/1iENWcCkGYPSsgjYJOnjDAIX01LFycnXn/view?usp=drive_link
 
 🎥 YouTube Clone - Full Stack Web Application
 
